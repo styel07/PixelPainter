@@ -1,0 +1,30 @@
+
+/* Div that contains the entire application */
+#pixelPainter {
+
+}
+
+/*Content on the side ie: paint palette, buttons, and title */
+#sidebar {
+
+}
+
+/* Layout of the colors that can be selected for painting */
+#paintColors {
+
+}
+
+/* Assigns rules to the undo, clear, and erase buttons */
+#buttons {
+
+}
+
+/* The border that outlines the paintable grid. This color can also change */
+#border {
+
+}
+
+/* The grid that contains the paintable area */
+#grid {
+
+}
