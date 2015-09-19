@@ -1,16 +1,31 @@
 
 /* Div that contains the entire application */
-#pixelPainter {
+div#container {
 
 }
 
-/*Content on the side ie: paint palette, buttons, and title */
-#sidebar {
+/* Div that contains elements in the Left Container */
+div#container div#leftContainer {
+
+}
+
+/* Div that contains elements in the Right Container */
+div#container div#rightContainer {
 
 }
 
 /* Layout of the colors that can be selected for painting */
-#paintColors {
+div#container div#leftContainer div#paintColors {
+
+}
+
+/* Layout of the colors that can be selected for painting */
+div#container div#leftContainer div#selectedColorBox {
+
+}
+
+/* Div that contains the buttons */
+div#container div#leftContainer div#buttonArea {
 
 }
 
