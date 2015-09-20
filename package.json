@@ -1,0 +1,23 @@
+{
+  "name": "pixel-painter",
+  "version": "1.0.0",
+  "description": "single page app for painting on a canvas by pixels with a swatch of colors",
+  "main": "PixelPainter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brockinit/PixelPainter.git"
+  },
+  "author": "Brock Lanoza, Elazar Corpuz, Bryan Alexander",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brockinit/PixelPainter/issues"
+  },
+  "homepage": "https://github.com/brockinit/PixelPainter#readme",
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.3.2"
+  }
+}
