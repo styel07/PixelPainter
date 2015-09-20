@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 function PixelPainter (width, height, totalW, totalH) {
 
@@ -64,3 +65,4 @@ function Canvas () {
   }
 
 } //end of the Canvas constructor
+
