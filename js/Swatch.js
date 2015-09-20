@@ -22,30 +22,32 @@ Swatch.prototype.createSwatch = function() {
 
   // creates a swatch that stores all the colors
   for (var i = 0; i < rows; i++) {
-    //var row = [];
-
     for (var index = 0; index < col; index++) {
 
       // paints colors into swatch container
       var colorDiv = document.createElement('button');
       var leftContainer = document.querySelector('#paintColors');
+
+      colorDiv.id = 'index_' + index;
       colorDiv.style.background = preselectedColors[i][index];
-      colorDiv.href ='#';
+      colorDiv.style.value = preselectedColors[i][index];
+      colorDiv.href = '#';
       colorDiv.style.height = '20px';
       colorDiv.style.width = '30px';
       colorDiv.style.border = '1px solid black';
       colorDiv.style.padding = '10px';
 
+
+      colorDiv.addEventListener('click', returnColor);
       leftContainer.appendChild(colorDiv);
-      colorDiv.addEventListener('click', getColor);
-      // createDiv();
 
     }
     leftContainer.appendChild(document.createElement('br'));
     //arr.push(row);
   }
 
-  function getColor() {
+  function returnColor() {
+  console.log(colorDiv.style.background);
 
   }
 };
