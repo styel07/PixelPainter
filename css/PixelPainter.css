@@ -1,18 +1,11 @@
 
-/* Div that contains the entire application */.
-.pixelPainter {
+/* Div that contains the entire application */
+#pixelPainter {
 
 }
 
-
-/*Class 1*/
 /*Content on the side ie: paint palette, buttons, and title */
-.sidebar {
-
-}
-
-/* The title of the application */
-#title {
+#sidebar {
 
 }
 
@@ -23,18 +16,6 @@
 
 /* Assigns rules to the undo, clear, and erase buttons */
 #buttons {
-
-}
-
-
-
-/*Class 2*/
-/* Right side of the page that contains the main canvas */
-#canvas {
-  border: 0;
-  width : 75%;
-  margin: 0 auto;
-  height: 100%;
 
 }
 
