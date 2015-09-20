@@ -16,8 +16,8 @@ Swatch.prototype.createSwatch = function() {
     colorDiv.style.background =
     colorDiv.style.height = '10px';
     colorDiv.style.width = '10px';
-
-    return document.body.appendChild(colorDiv);
+    var printDiv = document.body.appendChild(colorDiv);
+    return printDiv;
   }
 
   // creates a 2D array that stores all the colors
