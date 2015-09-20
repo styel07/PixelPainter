@@ -25,12 +25,13 @@ Swatch.prototype.createSwatch = function() {
     for (var index = 0; index < col; index++) {
 
       // paints colors into swatch container
-      var colorDiv = document.createElement('button');
+      var colorDiv = document.createElement('div');
       var leftContainer = document.querySelector('#paintColors');
-
+      //colorDiv.className = 'paintBlock';
       colorDiv.id = 'index_' + index;
+      colorDiv.style.display = 'inline-block';
       colorDiv.style.background = preselectedColors[i][index];
-      colorDiv.style.value = preselectedColors[i][index];
+      colorDiv.style = preselectedColors[i][index];
       colorDiv.href = '#';
       colorDiv.style.height = '20px';
       colorDiv.style.width = '30px';
@@ -38,18 +39,18 @@ Swatch.prototype.createSwatch = function() {
       colorDiv.style.padding = '10px';
 
 
-      colorDiv.addEventListener('click', returnColor);
+      colorDiv.addEventListener('click', this.returnColor);
+
       leftContainer.appendChild(colorDiv);
 
     }
     leftContainer.appendChild(document.createElement('br'));
-    //arr.push(row);
   }
+};
 
-  function returnColor() {
-  console.log(colorDiv.style.background);
-
-  }
+Swatch.prototype.returnColor = function() {
+  var selectedColor = this.style.background;
+  console.log(selectedColor);
 };
 
 
