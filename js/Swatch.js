@@ -27,7 +27,8 @@ Swatch.prototype.createSwatch = function() {
       // paints colors into swatch container
       var colorDiv = document.createElement('div');
       var leftContainer = document.querySelector('#paintColors');
-      //colorDiv.className = 'paintBlock';
+
+      // colorDiv.className = 'paintBlock';
       colorDiv.id = 'index_' + index;
       colorDiv.style.display = 'inline-block';
       colorDiv.style.background = preselectedColors[i][index];
@@ -37,7 +38,6 @@ Swatch.prototype.createSwatch = function() {
       colorDiv.style.width = '30px';
       colorDiv.style.border = '1px solid black';
       colorDiv.style.padding = '10px';
-
 
       colorDiv.addEventListener('click', this.returnColor);
 
