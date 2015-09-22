@@ -1,18 +1,39 @@
 
- function PixelPainter () {
-
-var sidebar = document.createElement('div');
-sidebar.id = 'sidePiece';
-document.body.appendChild(sidebar);
-
-}
-PixelPainter();
-
-
 var clickArray = [];
+var selectedColor = null;
+
 
 function Canvas () {
   var canvas = document.getElementById('canvas');
+
+  //sidebar class
+  var sidebar = document.createElement('div');
+  sidebar.id = 'sidePiece';
+  document.body.appendChild(sidebar);
+
+  //erase button unfills the last filled comb
+  var btnErase = document.createElement('button');
+  btnErase.className = 'sidePiece';
+  btnErase.id = 'btnErase';
+  btnErase.appendChild(document.createTextNode('Undo'));
+  document.body.appendChild(btnErase);
+  btnErase.addEventListener('click', function () {
+    clickArray.pop(); console.log(clickArray);
+    drawCanvas(context.boardWidth,boardHeight);
+  });
+
+  //clear button *clears the canvas*
+  var btnClear = document.createElement('button');
+  btnClear.className = 'sidePiece'
+  btnClear.id = 'btnClear';
+  btnClear.appendChild(document.createTextNode('Clear All'));
+  document.body.appendChild(btnClear);
+  btnClear.addEventListener('click', function () {
+    clickArray = [];
+    console.log(clickArray);
+    drawCanvas(context.boardWidth,boardHeight);
+  });
+
 
 //declare the necessary elements for drawing a honeycomb(hexagon) shape
   var combHeight,
@@ -20,7 +41,7 @@ function Canvas () {
     combRectHeight,
     combRectWidth,
     combAngle = 0.523598776,
-    sideLength = 20,
+    sideLength = 15,
     boardWidth = 50,
     boardHeight = 50,
 
@@ -32,14 +53,14 @@ function Canvas () {
   if (canvas.getContext) {
     var context = canvas.getContext('2d');
 
-    context.fillStyle = '#000000';
+    context.fillStyle = selectedColor;
     context.strokeStyle = '#CCCCCC';
     context.lineWidth = 4;
 
     drawCanvas(context, boardWidth, boardHeight);
 
 //on click function that 'paints' the clicked honeycomb
-    canvas.addEventListener('mousemove', function (evt) {
+    canvas.addEventListener('click', function (evt) {
       var x,
           y,
           combX,
@@ -67,7 +88,7 @@ function Canvas () {
       // Check if the mouse's coords are on the board
       if (combX >= 0 && combX < boardWidth) {
         if (combY >= 0 && combY < boardHeight) {
-          context.fillStyle = '#000000'; //set to selected palette color
+          context.fillStyle = selectedColor; //set to selected palette color
           drawComb(context, screenX, screenY, true);
           clickArray.push({ x : combX, y : combY });
         }
@@ -87,8 +108,8 @@ function Canvas () {
           i * combRectWidth + ((j % 2) * combRadius),
           j * (sideLength + combHeight),
           false,
-          i,
-          j
+          i, //added current iteration of comb coordinate
+          j //added current iteration of comb coordinate
         );
       }
     }
@@ -107,6 +128,7 @@ function Canvas () {
     canvasContext.lineTo(x, y + combHeight);
     canvasContext.closePath();
 
+//check array to see if there are any filled combs to leave colored
     for (var a = 0; a < clickArray.length; a++) {
       var obj = clickArray[a];
       if (obj.x === i && obj.y === j) {
@@ -179,7 +201,7 @@ Swatch.prototype.createSwatch = function() {
 };
 
 Swatch.prototype.returnColor = function() {
-  var selectedColor = this.style.background;
+  selectedColor = this.style.background;
   console.log(selectedColor);
 };
 

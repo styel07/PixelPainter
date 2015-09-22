@@ -12,10 +12,12 @@ ul, ol, dl {
 }
 
 h1 {
-  margin-top: 0;
-  padding-right: 15px;
-  padding-left: 15px;
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+  font-size: 24px;
+  padding: 5px 10px;
   text-align: left;
+  text-transform: uppercase;
+  text-rendering: optimizeLegibility;
 }
 
 a:hover, a:active, a:focus {
@@ -35,7 +37,7 @@ a:hover, a:active, a:focus {
 }
 
 /*Content on the side ie: paint palette, buttons, and title */
-#sidePiece {
+.sidePiece {
   display: inline-block;
   width: 20%;
   height:100%;
@@ -54,8 +56,17 @@ a:hover, a:active, a:focus {
 }
 
 /* Assigns rules to the undo, clear, and erase buttons */
-#buttons {
+#btnErase {
+  width: 100px;
+  height: 30px;
+  padding: 10px;
 
+}
+
+#btnClear {
+  width: 100px;
+  height: 30px;
+  padding: 10px;
 }
 
 
