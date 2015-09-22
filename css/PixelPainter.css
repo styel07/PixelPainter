@@ -41,14 +41,10 @@ a:hover, a:active, a:focus {
   display: inline-block;
   width: 20%;
   height:100%;
-  padding-left: 25px;
+  padding-left: 50px;
   padding-top: 20px;
 }
 
-/* The title of the application */
-#title {
-
-}
 
 /* Layout of the colors that can be selected for painting */
 #paintColors {
@@ -60,6 +56,8 @@ a:hover, a:active, a:focus {
   width: 100px;
   height: 30px;
   padding: 10px;
+  margin-top: 25px;
+  margin-left: 40px;
 
 }
 
@@ -71,28 +69,4 @@ a:hover, a:active, a:focus {
 
 
 
-/*Class 2*/
-/* Right side of the page that contains the main canvas */
-#canvas {
-  border: 0;
-  margin: 0 auto;
-  display: inline-block;
-  padding: 10px;
-  float: right;
-  margin-right: 10px;
-  margin-top: 75px;
-
-}
-
-/* The border that outlines the paintable grid. This color can also change */
-#border {
-  width: 85%;
-  height: 100%;
-  padding: 15px;
-  border-style: solid;
-  border-width: 3px;
-  position: absolute;
-  margin-left: 225px;
-
-}
 

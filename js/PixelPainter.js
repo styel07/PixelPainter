@@ -1,6 +1,8 @@
 
 var clickArray = [];
 var selectedColor = null;
+var colors = [];
+var counter = 0;
 
 
 function Canvas () {
@@ -18,20 +20,19 @@ function Canvas () {
   btnErase.appendChild(document.createTextNode('Undo'));
   document.body.appendChild(btnErase);
   btnErase.addEventListener('click', function () {
-    clickArray.pop(); console.log(clickArray);
-    drawCanvas(context.boardWidth,boardHeight);
+    clickArray.pop();
+    drawCanvas(context, boardWidth, boardHeight);
   });
 
   //clear button *clears the canvas*
   var btnClear = document.createElement('button');
-  btnClear.className = 'sidePiece'
+  btnClear.className = 'sidePiece';
   btnClear.id = 'btnClear';
   btnClear.appendChild(document.createTextNode('Clear All'));
   document.body.appendChild(btnClear);
   btnClear.addEventListener('click', function () {
     clickArray = [];
-    console.log(clickArray);
-    drawCanvas(context.boardWidth,boardHeight);
+    drawCanvas(context, boardWidth, boardHeight);
   });
 
 
@@ -60,7 +61,7 @@ function Canvas () {
     drawCanvas(context, boardWidth, boardHeight);
 
 //on click function that 'paints' the clicked honeycomb
-    canvas.addEventListener('click', function (evt) {
+    canvas.addEventListener('mousemove', function (evt) {
       var x,
           y,
           combX,
@@ -88,9 +89,15 @@ function Canvas () {
       // Check if the mouse's coords are on the board
       if (combX >= 0 && combX < boardWidth) {
         if (combY >= 0 && combY < boardHeight) {
-          context.fillStyle = selectedColor; //set to selected palette color
+          for (var b = 0; b < colors.length; b++) {
+            if (colors.indexOf(b) === counter - 1) {
+              context.fillStyle = colors[b]; console.log(colors[b]); //set to selected palette color
+            }
+          }
+          var thisColor = selectedColor;
           drawComb(context, screenX, screenY, true);
-          clickArray.push({ x : combX, y : combY });
+          clickArray.push({ x : combX, y : combY, z : thisColor
+          });
         }
       }
     });
@@ -133,6 +140,7 @@ function Canvas () {
       var obj = clickArray[a];
       if (obj.x === i && obj.y === j) {
         fill = true;
+        //canvasContext.fill = obj.z;
       }
     }
     if (fill) {
@@ -202,7 +210,10 @@ Swatch.prototype.createSwatch = function() {
 
 Swatch.prototype.returnColor = function() {
   selectedColor = this.style.background;
-  console.log(selectedColor);
+  colors.push(selectedColor);
+  counter++;
+  console.log(counter);
+  console.log(colors);
 };
 
 
