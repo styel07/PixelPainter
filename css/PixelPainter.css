@@ -1,21 +1,51 @@
 
-/* Div that contains the entire application */
-div#container {
+/* Div that contains the entire application */.
+.pixelPainter {
+  background-color: #FFF;
+  margin: 0 auto;
 
 }
 
-/* Div that contains elements in the Left Container */
-div#container div#leftContainer {
+ul, ol, dl {
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  margin-top: 0;
+  padding-right: 15px;
+  padding-left: 15px;
+  text-align: left;
+}
+
+a:hover, a:active, a:focus {
+  text-decoration: none;
+}
+
+/*main canvas */
+#canvas {
+  border: 0;
+  margin: 0 auto;
+  display: block;
+  padding: 10px;
+  float: right;
+  margin-right: 10px;
+  margin-top: 75px;
 
 }
 
-/* Div that contains elements in the Right Container */
-div#container div#rightContainer {
-
+/*Content on the side ie: paint palette, buttons, and title */
+#sidePiece {
+  display: inline-block;
+  width: 20%;
+  height:100%;
+  padding-left: 25px;
+  padding-top: 20px;
 }
 
-/* Layout of the colors that can be selected for painting */
-div#container div#leftContainer div#paintColors {
+/* The title of the application */
+#title {
+
 
 }
 
@@ -34,12 +64,30 @@ div#container div#leftContainer div#buttonArea {
 
 }
 
+
+
+/*Class 2*/
+/* Right side of the page that contains the main canvas */
+#canvas {
+  border: 0;
+  margin: 0 auto;
+  display: inline-block;
+  padding: 10px;
+  float: right;
+  margin-right: 10px;
+  margin-top: 75px;
+
+}
+
 /* The border that outlines the paintable grid. This color can also change */
 #border {
+  width: 85%;
+  height: 100%;
+  padding: 15px;
+  border-style: solid;
+  border-width: 3px;
+  position: absolute;
+  margin-left: 225px;
 
 }
 
-/* The grid that contains the paintable area */
-#grid {
-
-}
