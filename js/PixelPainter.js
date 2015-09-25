@@ -1,12 +1,14 @@
-
 function PixelPainter () {
 
-var sidebar = document.createElement('div');
-sidebar.id = 'sidePiece';
-document.body.appendChild(sidebar);
+  var sidebar = document.createElement('div');
+  sidebar.id = 'sidePiece';
+  var cavasArea = document.createElement('div');
+  canvasArea.id = 'canvasArea';
 
-
+  document.querySelector('#cavas').appendChild(sidebar);
+  document.querySelector('#cavas').appendChild(canvasarea);
 }
+
 PixelPainter();
 
 var clickArray = [];
@@ -14,39 +16,11 @@ var selectedColor = null;
 var colors = [];
 var counter = 0;
 
-
 function Canvas () {
-  var canvas = document.getElementById('canvas');
+  canvasArea.style.width = '850px';
+  canvasarea.style.height = '900px';
 
-  //sidebar class
-  var sidebar = document.createElement('div');
-  sidebar.id = 'sidePiece';
-  document.body.appendChild(sidebar);
-
-  //erase button unfills the last filled comb
-  var btnErase = document.createElement('button');
-  btnErase.className = 'sidePiece';
-  btnErase.id = 'btnErase';
-  btnErase.appendChild(document.createTextNode('Undo'));
-  document.body.appendChild(btnErase);
-  btnErase.addEventListener('click', function () {
-    clickArray.pop();
-    drawCanvas(context, boardWidth, boardHeight);
-  });
-
-  //clear button *clears the canvas*
-  var btnClear = document.createElement('button');
-  btnClear.className = 'sidePiece';
-  btnClear.id = 'btnClear';
-  btnClear.appendChild(document.createTextNode('Clear All'));
-  document.body.appendChild(btnClear);
-  btnClear.addEventListener('click', function () {
-    clickArray = [];
-    drawCanvas(context, boardWidth, boardHeight);
-  });
-
-
-//declare the necessary elements for drawing a honeycomb(hexagon) shape
+  //declare the necessary elements for drawing a honeycomb(hexagon) shape
   var combHeight,
     combRadius,
     combRectHeight,
@@ -70,7 +44,7 @@ function Canvas () {
 
     drawCanvas(context, boardWidth, boardHeight);
 
-//on click function that 'paints' the clicked honeycomb
+  // on click function that 'paints' the clicked honeycomb
     canvas.addEventListener('mousemove', function (evt) {
       var x,
           y,
@@ -113,7 +87,7 @@ function Canvas () {
     });
   } //end of the if statement
 
-//draw out the canvas of honeycombs
+  //draw out the canvas of honeycombs
   function drawCanvas (canvasContext, width, height) {
     var i,
         j;
@@ -132,7 +106,7 @@ function Canvas () {
     }
   }
 
-//draw out each individual honeycomb
+  //draw out each individual honeycomb
   function drawComb (canvasContext, x, y, fill, i, j) {
     var fill = fill || false;
 
@@ -145,7 +119,7 @@ function Canvas () {
     canvasContext.lineTo(x, y + combHeight);
     canvasContext.closePath();
 
-//check array to see if there are any filled combs to leave colored
+  //check array to see if there are any filled combs to leave colored
     for (var a = 0; a < clickArray.length; a++) {
       var obj = clickArray[a];
       if (obj.x === i && obj.y === j) {
@@ -159,12 +133,10 @@ function Canvas () {
       canvasContext.stroke();
     }
   }
+
 } //end of the Canvas constructor
 
 Canvas();
-
-
-
 
 // Swatch
 
@@ -174,7 +146,7 @@ function Swatch() {
 
 Swatch.prototype.createSwatch = function() {
   var arr = [];
-  var num = 0;
+  var num = 0;
   var col = 6;
   var preselectedColors = [
   ['#FDEE51  ','#F3D057  ','#FDF175  ','#ECCE7F  ','#3D6018  ','#43691B  '],
@@ -190,32 +162,54 @@ Swatch.prototype.createSwatch = function() {
   ['#626D79  ','#4A709B  ','#3C6768  ','#7FCBBF  ','#979797  ','#C7C7C7  ']];
   var rows = preselectedColors.length;
 
+  // selectes the Side piece and assigns it to a variable
+  var leftContainer = document.querySelector('#sidePiece');
+
   // creates a swatch that stores all the colors
   for (var i = 0; i < rows; i++) {
     for (var index = 0; index < col; index++) {
 
-      // paints colors into swatch container
-      var colorDiv = document.createElement('div');
-      var leftContainer = document.querySelector('#sidePiece');
-     
-      colorDiv.id = 'sidePiece';
+      var colorDiv = document.createElement('div');
+      // defines each divs properties
+      colorDiv.id = 'color_' + preselectedColors[i][index];
       colorDiv.style.display = 'inline-block';
       colorDiv.style.background = preselectedColors[i][index];
-      colorDiv.style = preselectedColors[i][index];
-      colorDiv.href = '#';
       colorDiv.style.height = '20px';
       colorDiv.style.width = '30px';
       colorDiv.style.border = '1px solid black';
       colorDiv.style.padding = '10px';
-
-
+      // adds an EventListner click function
       colorDiv.addEventListener('click', this.returnColor);
 
       leftContainer.appendChild(colorDiv);
-
     }
    // leftContainer.appendChild(document.createElement('br'));
-  }
+  }
+
+  // Creates buttons
+  // Erase button unfills the last filled comb
+
+  var btnErase = document.createElement('button');
+  btnErase.id = 'btnErase';
+  btnErase.appendChild(document.createTextNode('Undo'));
+  btnErase.addEventListener('click', function () {
+    clickArray.pop();
+    drawCanvas(context, boardWidth, boardHeight);
+  });
+
+  //clear button *clears the canvas*
+  var btnClear = document.createElement('button');
+  btnClear.id = 'btnClear';
+  btnClear.appendChild(document.createTextNode('Clear All'));
+  btnClear.addEventListener('click', function () {
+    clickArray = [];
+    drawCanvas(context, boardWidth, boardHeight);
+  });
+
+  leftContainer.appendChild(btnClear);
+  leftContainer.appendChild(btnErase);
+  //attaches the buttons to sidebar div
+
 };
 
 Swatch.prototype.returnColor = function() {

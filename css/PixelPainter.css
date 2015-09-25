@@ -67,13 +67,8 @@ a:hover, a:active, a:focus {
 
 
 /* Layout of the colors that can be selected for painting */
-div#container div#leftContainer div#selectedColorBox {
-
-}
-
-/* Div that contains the buttons */
-div#container div#leftContainer div#buttonArea {
-
+div#sidePiece {
+width : 35%;
 }
 
 /* Assigns rules to the undo, clear, and erase buttons */
